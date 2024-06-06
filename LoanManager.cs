@@ -38,12 +38,36 @@ namespace Biblioteca
 
         public void ListLoans()
         {
-
+            if(ListaEmprestimos.Count > 0)
+            {
+                foreach (Loan loan in ListaEmprestimos)
+                {
+                    Console.WriteLine("----------------------------");
+                    Console.WriteLine($"LIVRO: {loan.Book.Title}");
+                    Console.WriteLine($"USUÁRIO: {loan.User.Name}");
+                    Console.WriteLine($"DATA DO EMPRÉSTIMO: {loan.LoanDate}");
+                    Console.WriteLine($"DATA DE RETORNO: {loan.ReturnDate}");
+                    Console.WriteLine("----------------------------");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Não há registro de empréstimos");
+            }
         }
 
         public void FindLoan(string isbn, int userId)
         {
-
+            foreach(Loan loan in ListaEmprestimos)
+            {
+                if(loan.Book.ISBN == isbn && loan.User.Id == userId) {
+                    Console.WriteLine("----------------------------");
+                    Console.WriteLine($"LIVRO: {loan.Book.Title}");
+                    Console.WriteLine($"USUÁRIO: {loan.User.Name}");
+                    Console.WriteLine($"DATA DO EMPRÉSTIMO: {loan.LoanDate}");
+                    Console.WriteLine($"DATA DE RETORNO: {loan.ReturnDate}");
+                    Console.WriteLine("----------------------------");
+                }
         }
 
     }
