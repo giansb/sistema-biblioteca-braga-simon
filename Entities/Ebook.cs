@@ -10,7 +10,7 @@ namespace Biblioteca.Entities
     {
         public double FileSize { get; protected set; }
         public string FileFormat { get; protected set; }
-        public Ebook(double filesize, string fileformat, string title, string author, int isbm) : base(title, author, isbm)
+        public Ebook(double filesize, string fileformat, string title, string author, string isbm) : base(title, author, isbm)
         {
             this.FileSize = filesize;
             this.FileFormat = fileformat;

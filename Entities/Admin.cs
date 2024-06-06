@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Entities
 {
-    internal class Admin
+    internal class Admin : User
     {
     }
 }
