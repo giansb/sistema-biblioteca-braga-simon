@@ -8,11 +8,11 @@ namespace Biblioteca.Entities
 {
     internal class Book
     {
-        protected string Title { get;  private set; }
-        protected string Author { get; private set; }
-        protected int ISBN { get; private set; }
+        public string Title { get;  protected set; }
+        public string Author { get; protected set; }
+        public string ISBN { get; protected set; }
 
-        public Book(string title, string author, int isbm)
+        public Book(string title, string author, string isbm)
         {
             this.Title = title;
             this.Author = author;

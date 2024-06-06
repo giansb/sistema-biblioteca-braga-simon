@@ -8,8 +8,8 @@ namespace Biblioteca.Entities
 {
     internal class Ebook : Book
     {
-        protected double FileSize { get; private set; }
-        protected string FileFormat { get; private set; }
+        public double FileSize { get; protected set; }
+        public string FileFormat { get; protected set; }
         public Ebook(double filesize, string fileformat, string title, string author, int isbm) : base(title, author, isbm)
         {
             this.FileSize = filesize;
