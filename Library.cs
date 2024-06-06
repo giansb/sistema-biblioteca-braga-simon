@@ -9,7 +9,7 @@ namespace Biblioteca
 {
     internal class Library : IBookManager
     {
-        List<Book> books = [];
+        List<Book> books = new List<Book>();
         public void AddBook(Book book)
         {
             books.Add(book);
