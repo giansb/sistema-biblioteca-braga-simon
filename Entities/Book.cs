@@ -21,7 +21,7 @@ namespace Biblioteca.Entities
 
         public void DisplayDetails()
         {
-            Console.WriteLine("-----DETALHES DO LIVRO-----");
+            
             Console.WriteLine($"TITULO: {this.Title}");
             Console.WriteLine($"AUTOR: {this.Author}");
             Console.WriteLine($"ISBN: {this.ISBN}");
