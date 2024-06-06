@@ -19,12 +19,14 @@ namespace Biblioteca.Entities
 
         public override void DisplayDetails()
         {
-            Console.WriteLine("-----DETALHES DO EBOOK-----");
+            
+            Console.WriteLine("--------DETALHES DO EBOOK--------");
             Console.WriteLine($"TITULO: {this.Title}");
             Console.WriteLine($"AUTOR: {this.Author}");
             Console.WriteLine($"TAMANHO DO ARQUIVO: {this.FileSize}");
             Console.WriteLine($"FORMATO DO ARQUIVO: {this.FileFormat}");
             Console.WriteLine($"ISBN: {this.ISBN}");
+            Console.WriteLine("---------------------------------");
         }
     }
 }

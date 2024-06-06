@@ -13,10 +13,10 @@ namespace Biblioteca
         public void AddBook(Book book)
         {
             books.Add(book);
-            Console.WriteLine("---------------------------");
+            Console.WriteLine("------------------------------");
             Console.WriteLine("-LIVRO ADICIONADO COM SUCESSO-");
             Console.WriteLine($"LIVRO: {book.Title}");
-            Console.WriteLine("---------------------------");
+            Console.WriteLine("------------------------------");
         }
 
         public void RemoveBook(string isbn)
