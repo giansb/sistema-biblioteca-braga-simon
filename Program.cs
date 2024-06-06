@@ -9,3 +9,5 @@ Library lib = new Library();
 
 lib.AddBook(book);
 lib.ListBooks();
+lib.RemoveBook("0000");
+lib.ListBooks();

@@ -13,8 +13,8 @@ namespace Biblioteca
         public void AddBook(Book book)
         {
             books.Add(book);
-            Console.WriteLine("-LIVRO ADICIONADO COM SUCESSO-");
             Console.WriteLine("---------------------------");
+            Console.WriteLine("-LIVRO ADICIONADO COM SUCESSO-");
             Console.WriteLine($"LIVRO: {book.Title}");
             Console.WriteLine("---------------------------");
         }
@@ -28,22 +28,34 @@ namespace Biblioteca
                 {
                     title = books[i].Title;
                     books.Remove(books[i]);
+                    Console.WriteLine("---------------------------");
+                    Console.WriteLine("-LIVRO REMOVIDO COM SUCESSO-");
+                    Console.WriteLine($"LIVRO: {title}");
+                    Console.WriteLine("---------------------------");
+                }
+                else
+                {
+                    Console.WriteLine("Não foi encontrado nenhum livro com o ISBN informado.");
                 }
             }
-            Console.WriteLine("-LIVRO ADICIONADO COM SUCESSO-");
-            Console.WriteLine("---------------------------");
-            Console.WriteLine($"LIVRO: {title}");
-            Console.WriteLine("---------------------------");
+            
         }
 
         public void ListBooks()
         {
             Console.WriteLine("-----LISTA DE LIVROS-----");
             Console.WriteLine("-------------------------");
-            foreach (Book book in books)
+            if(books.Count > 0)
             {
-                book.DisplayDetails();
-                Console.WriteLine("-------------------------");
+                foreach (Book book in books)
+                {
+                    book.DisplayDetails();
+                    Console.WriteLine("-------------------------");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum livro cadastrado.");
             }
         }
 
