@@ -118,6 +118,84 @@ namespace Biblioteca
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[Bem vindo ao Sistema de Livros]");
             Console.ResetColor();
+
+            Console.WriteLine("1 - Procurar Livro");
+            Console.WriteLine("2 - Listar Livro");
+            Console.WriteLine("3 - Adicionar Livro");
+            Console.WriteLine("4 - Remover Livro");
+            Console.Write("Digite o número da ação que deseja executar: ");
+            int answer = Convert.ToInt32(Console.ReadLine());
+
+            switch(answer)
+            {
+                case 1:
+                    FindBookScreen();
+                    break;
+                case 2:
+                    ListBooksScreen();
+                    break;
+                case 3:
+                    AddBookScreen();
+                    break;
+                case 4:
+                    RemoveBookScreen();
+                    break;
+            }
+
+        }
+
+        private void FindBookScreen()
+        {
+            Console.WriteLine("--------------");
+            Console.Write("Digite o ISBN do livro que procura: ");
+            string isbn = Console.ReadLine();
+
+            library.FindBook(isbn);
+        }
+        private void ListBooksScreen()
+        {
+            Console.WriteLine("--------------------");
+            Console.WriteLine("[Lista de Livros]");
+            library.ListBooks();
+        }
+        private void AddBookScreen()
+        {
+            Console.WriteLine("----------------------");
+            Console.WriteLine("Adicionar 1 - Livro 2 - Ebook");
+            int option = Convert.ToInt32(Console.ReadLine());
+
+            Book book;
+
+            Console.Write("Digite o nome: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Digite o nome: ");
+            string author = Console.ReadLine();
+
+            Console.Write("Digite o nome: ");
+            string ibsm = Console.ReadLine();
+
+            if (option == 1)
+            {
+                book = new Book(name, author, ibsm);
+            } else
+            {
+                Console.Write("Digite o Tipo de Arquivo (PDF/TXT/DOCS): ");
+                string fileType = Console.ReadLine();
+
+                Console.Write("Digite o tamanho do arquivo: ");
+                double fileSize = Convert.ToDouble(Console.ReadLine());
+
+                book = new Ebook(fileSize, fileType, name, author, ibsm);
+            }
+            library.AddBook(book);
+
+        }
+        private void RemoveBookScreen()
+        {
+            Console.Write("Digite o ibsm do livro que deseja remover: ");
+            string ibsm = Console.ReadLine();
+            library.RemoveBook(ibsm);
         }
     }
 }
