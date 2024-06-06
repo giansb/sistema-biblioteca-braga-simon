@@ -17,7 +17,7 @@ namespace Biblioteca.Entities
 
         }
 
-        public void DisplayDetails()
+        public override void DisplayDetails()
         {
             Console.WriteLine("-----DETALHES DO EBOOK-----");
             Console.WriteLine($"TITULO: {this.Title}");
