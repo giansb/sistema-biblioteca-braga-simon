@@ -17,13 +17,20 @@ namespace Biblioteca
             library = new Library();
         }
 
+        private void InputMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(message);
+            Console.ResetColor();
+        }
         public void Run()
         {
             while(true)
             {
                 Console.WriteLine("1 - Sistema de Usuários");
                 Console.WriteLine("2 - Sistema de Livros");
-                Console.Write("Digite o número da interação que deseja: ");
+                Console.WriteLine("0 - Fechar Biblioteca Mágica");
+                InputMessage("Digite o número da interação que deseja: ");
                 int answer = Convert.ToInt32(Console.ReadLine());
 
                 if (answer == 0) break;
@@ -55,7 +62,7 @@ namespace Biblioteca
             Console.WriteLine("2 - Listar Usuários");
             Console.WriteLine("3 - Adicionar Usuário");
             Console.WriteLine("4 - Remover Usuário");
-            Console.Write("Digite o número da ação que deseja executar: ");
+            InputMessage("Digite o número da ação que deseja executar: ");
             int option = Convert.ToInt32(Console.ReadLine());
 
             switch(option)
@@ -77,7 +84,7 @@ namespace Biblioteca
         }
         private void FindUserScreen()
         {
-            Console.Write("Digite o id do usuário: ");
+            InputMessage("Digite o id do usuário: ");
             int id = Convert.ToInt32(Console.ReadLine());
             User result = userManager.FindUser(id);
             result.DisplayDetails();
@@ -92,13 +99,13 @@ namespace Biblioteca
         private void AddUserScreen()
         {
             Console.WriteLine("----------------");
-            Console.Write("Digite o nome do usuário: ");
+            InputMessage("Digite o nome do usuário: ");
             string name = Console.ReadLine();
 
-            Console.Write("Digite o email: ");
+            InputMessage("Digite o email: ");
             string email = Console.ReadLine();
 
-            Console.Write("Digite o id: ");
+            InputMessage("Digite o id: ");
             int id = Convert.ToInt32(Console.ReadLine());
 
             User newUser = new User(name, email, id);
@@ -107,7 +114,7 @@ namespace Biblioteca
         private void RemoveUserScreen()
         {
             Console.WriteLine("--------");
-            Console.Write("Digite o Id do usuário que deseja remover: ");
+            InputMessage("Digite o Id do usuário que deseja remover: ");
             int id = Convert.ToInt32(Console.ReadLine());
 
             userManager.RemoveUser(id);
@@ -123,7 +130,7 @@ namespace Biblioteca
             Console.WriteLine("2 - Listar Livro");
             Console.WriteLine("3 - Adicionar Livro");
             Console.WriteLine("4 - Remover Livro");
-            Console.Write("Digite o número da ação que deseja executar: ");
+            InputMessage("Digite o número da ação que deseja executar: ");
             int answer = Convert.ToInt32(Console.ReadLine());
 
             switch(answer)
@@ -147,7 +154,7 @@ namespace Biblioteca
         private void FindBookScreen()
         {
             Console.WriteLine("--------------");
-            Console.Write("Digite o ISBN do livro que procura: ");
+            InputMessage("Digite o ISBN do livro que procura: ");
             string isbn = Console.ReadLine();
 
             library.FindBook(isbn);
@@ -155,7 +162,6 @@ namespace Biblioteca
         private void ListBooksScreen()
         {
             Console.WriteLine("--------------------");
-            Console.WriteLine("[Lista de Livros]");
             library.ListBooks();
         }
         private void AddBookScreen()
@@ -166,13 +172,13 @@ namespace Biblioteca
 
             Book book;
 
-            Console.Write("Digite o nome: ");
+            InputMessage("Digite o nome: ");
             string name = Console.ReadLine();
 
-            Console.Write("Digite o nome: ");
+            InputMessage("Digite o autor: ");
             string author = Console.ReadLine();
 
-            Console.Write("Digite o nome: ");
+            InputMessage("Digite o ibsm: ");
             string ibsm = Console.ReadLine();
 
             if (option == 1)
@@ -180,10 +186,10 @@ namespace Biblioteca
                 book = new Book(name, author, ibsm);
             } else
             {
-                Console.Write("Digite o Tipo de Arquivo (PDF/TXT/DOCS): ");
+                InputMessage("Digite o Tipo de Arquivo (PDF/TXT/DOCS): ");
                 string fileType = Console.ReadLine();
 
-                Console.Write("Digite o tamanho do arquivo: ");
+                InputMessage("Digite o tamanho do arquivo: ");
                 double fileSize = Convert.ToDouble(Console.ReadLine());
 
                 book = new Ebook(fileSize, fileType, name, author, ibsm);
@@ -193,7 +199,7 @@ namespace Biblioteca
         }
         private void RemoveBookScreen()
         {
-            Console.Write("Digite o ibsm do livro que deseja remover: ");
+            InputMessage("Digite o ibsm do livro que deseja remover: ");
             string ibsm = Console.ReadLine();
             library.RemoveBook(ibsm);
         }
