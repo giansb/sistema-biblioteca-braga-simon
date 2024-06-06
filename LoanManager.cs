@@ -58,9 +58,10 @@ namespace Biblioteca
 
         public void FindLoan(string isbn, int userId)
         {
-            foreach(Loan loan in ListaEmprestimos)
+            foreach (Loan loan in ListaEmprestimos)
             {
-                if(loan.Book.ISBN == isbn && loan.User.Id == userId) {
+                if (loan.Book.ISBN == isbn && loan.User.Id == userId)
+                {
                     Console.WriteLine("----------------------------");
                     Console.WriteLine($"LIVRO: {loan.Book.Title}");
                     Console.WriteLine($"USUÁRIO: {loan.User.Name}");
@@ -68,7 +69,7 @@ namespace Biblioteca
                     Console.WriteLine($"DATA DE RETORNO: {loan.ReturnDate}");
                     Console.WriteLine("----------------------------");
                 }
+            }
         }
-
     }
 }
