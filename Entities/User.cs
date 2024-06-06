@@ -22,6 +22,7 @@ namespace Biblioteca.Entities
         public virtual void DisplayDetails()
         {
             Console.WriteLine($"Id: {Id}\nNome: {Name}\nEmail: {Email}");
+            Console.WriteLine("----------------------------------");
         }
     }
 }

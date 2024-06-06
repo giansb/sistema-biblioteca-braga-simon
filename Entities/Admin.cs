@@ -25,6 +25,7 @@ namespace Biblioteca.Entities
         public override void DisplayDetails()
         {
             Console.WriteLine($"Id: {Id}\nNome: {Name}\nEmail: {Email}\nNivel de Acesso: {AcessLevel}");
+            Console.WriteLine("----------------------------------");
         }
     }
 }
