@@ -13,6 +13,14 @@ namespace Biblioteca.Entities
         public string LoanDate { get; protected set; }
         public string ReturnDate { get; protected set; }
 
+        public Loan(User user, Book book, string loanDate, string returnDate)
+        {
+            User = user;
+            Book = book;
+            LoanDate = loanDate;
+            ReturnDate = returnDate;
+        }
+
         public void DisplayDetails()
         {
             Console.WriteLine("----DETALHES DO EMPRÉSTIMO----");

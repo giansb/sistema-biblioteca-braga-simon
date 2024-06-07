@@ -11,10 +11,12 @@ namespace Biblioteca
     {
         private UserManager userManager;
         private Library library;
-        public Screens() 
+        private LoanManager loanManager;
+        public Screens()
         {
             userManager = new UserManager();
             library = new Library();
+            loanManager = new LoanManager();
         }
 
         private void InputMessage(string message)
@@ -25,7 +27,7 @@ namespace Biblioteca
         }
         public void Run()
         {
-            while(true)
+            while (true)
             {
                 Console.WriteLine("1 - Sistema de Usuários");
                 Console.WriteLine("2 - Sistema de Livros");
@@ -52,7 +54,7 @@ namespace Biblioteca
             }
         }
 
-        public void UserSystem() 
+        public void UserSystem()
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[Bem vindo ao Sistema de Usuários]\n");
@@ -65,7 +67,7 @@ namespace Biblioteca
             InputMessage("Digite o número da ação que deseja executar: ");
             int option = Convert.ToInt32(Console.ReadLine());
 
-            switch(option)
+            switch (option)
             {
                 case 1:
                     FindUserScreen();
@@ -130,10 +132,13 @@ namespace Biblioteca
             Console.WriteLine("2 - Listar Livro");
             Console.WriteLine("3 - Adicionar Livro");
             Console.WriteLine("4 - Remover Livro");
+            Console.WriteLine("5 - Retirar Livro");
+            Console.WriteLine("6 - Devolver Livro");
+            Console.WriteLine("7 - Listar Empréstimos");
             InputMessage("Digite o número da ação que deseja executar: ");
             int answer = Convert.ToInt32(Console.ReadLine());
 
-            switch(answer)
+            switch (answer)
             {
                 case 1:
                     FindBookScreen();
@@ -147,6 +152,15 @@ namespace Biblioteca
                 case 4:
                     RemoveBookScreen();
                     break;
+                case 5:
+                    GetBookScreen();
+                    break;
+                case 6:
+                    RetrieveBookScreen();
+                    break;
+                case 7:
+                    ListBooksLoanScreen();
+                    break;
             }
 
         }
@@ -157,7 +171,7 @@ namespace Biblioteca
             InputMessage("Digite o ISBN do livro que procura: ");
             string isbn = Console.ReadLine();
 
-            library.FindBook(isbn);
+            library.FindBook(isbn).DisplayDetails();
         }
         private void ListBooksScreen()
         {
@@ -202,6 +216,42 @@ namespace Biblioteca
             InputMessage("Digite o ibsm do livro que deseja remover: ");
             string ibsm = Console.ReadLine();
             library.RemoveBook(ibsm);
+        }
+
+        private void GetBookScreen()
+        {
+            InputMessage("Digite um id de usuário: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            InputMessage("Digite o isbn de um livro: ");
+            string isbn = Console.ReadLine();
+
+            InputMessage("Digite a data de retirada (DD/MM/AAAA): ");
+            string loanDate = Console.ReadLine();
+
+            InputMessage("Digite a data de retorno (DD/MM/AAAA): ");
+            string loanReturn = Console.ReadLine();
+
+            User user = userManager.FindUser(id);
+            Book book = library.FindBook(isbn);
+
+            Loan loan = new Loan(user, book, loanDate, loanReturn);
+        }
+
+        public void RetrieveBookScreen()
+        {
+            InputMessage("Digite o id do usuário: ");
+            int id = Convert.ToInt32((Console.ReadLine()));
+
+            InputMessage("Digite o isbn do livro: ");
+            string isbn = Console.ReadLine();
+
+            loanManager.RegisterReturn(isbn, id);
+        }
+
+        public void ListBooksLoanScreen()
+        {
+            loanManager.ListLoans();
         }
     }
 }

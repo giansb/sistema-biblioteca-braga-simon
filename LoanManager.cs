@@ -9,7 +9,12 @@ namespace Biblioteca
 {
     internal class LoanManager : ILoanManager
     {
-        public List<Loan> ListaEmprestimos = [];
+        public List<Loan> ListaEmprestimos;
+
+        public LoanManager()
+        {
+            ListaEmprestimos = new List<Loan>();
+        }
 
 
         public void RegisterLoan(Loan loan)
