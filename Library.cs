@@ -59,15 +59,9 @@ namespace Biblioteca
             }
         }
 
-        public void FindBook(string isbn)
+        public Book FindBook(string isbn)
         {
-            foreach (Book book in books)
-            {
-                if(book.ISBN == isbn)
-                {
-                    book.DisplayDetails();
-                }
-            }
+            return books.Find(x => x.ISBN == isbn);
         }
     }
 }

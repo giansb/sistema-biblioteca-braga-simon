@@ -9,7 +9,12 @@ namespace Biblioteca
 {
     internal class LoanManager : ILoanManager
     {
-        public List<Loan> ListaEmprestimos = [];
+        public List<Loan> ListaEmprestimos;
+
+        public LoanManager()
+        {
+            ListaEmprestimos = new List<Loan>();
+        }
 
 
         public void RegisterLoan(Loan loan)
@@ -24,9 +29,9 @@ namespace Biblioteca
         {
             for(var i = 0; i < ListaEmprestimos.Count; i++)
             {
-                if (ListaEmprestimos[i].Book.ISBN == isbn)
+                if (ListaEmprestimos[i].Book.ISBN == isbn && ListaEmprestimos[i].User.Id == userId)
                 {
-                    ListaEmprestimos[i].DisplayDetails();
+                    ListaEmprestimos.Remove(ListaEmprestimos[i]);
                 } else
                 {
                     Console.WriteLine($"Não foi encontrado nenhum registro com essas informações.");
